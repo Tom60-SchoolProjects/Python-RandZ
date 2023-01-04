@@ -1,0 +1,42 @@
+
+{% extends 'socle/base.jinja' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% for zombie in zombies %}
+    <div class="zombie" style="position: absolute; top: {{ zombie.top}}px; left: {{ zombie.left }}px">
+
+        <!-- La tête -->
+        <div class="body-part" style="clip-path: inset(100px 600px 600px 100px); left: 8px; top: 10px">
+            <img src="{{ zombie.head }}" width="800" height="800">
+        </div>
+        
+        <!-- Le tronc -->
+        <div class="body-part" style="clip-path: inset(250px 450px 400px 250px); left: -142px; top: -42px">
+            <img src="{{ zombie.trunk }}" width="800" height="800">
+        </div>
+        
+        <!-- Le bras de gauche -->
+        <div class="body-part" style="clip-path: inset(250px 200px 400px 550px); top: -42px; left: -492px">
+        <img src="{{ zombie.left_arm}}" width="800" height="800">
+        </div>
+        
+        <!-- Le bras de droite -->
+        <div class="body-part" style="clip-path: inset(650px 300px 0px 450px); top: -442px; left: -242px">
+        <img src="{{ zombie.right_arm }}" width="800" height="800">
+        </div>
+        
+        <!-- La jambe de gauche -->
+        <div class="body-part" style="clip-path: inset(250px 700px 400px 50px); top: 108px; left: 58px">
+            <img src="{{ zombie.left_leg }}" width="800" height="800">
+        </div>
+        
+        <!-- La jambe de droite -->
+        <div class="body-part" style="clip-path: inset(650px 500px 0px 250px); top: -292px; left: -92px">
+            <img src="{{ zombie.right_leg }}" width="800" height="800">
+        </div>
+        
+    </div>
+    {% endfor %}
+{% endblock content %}
