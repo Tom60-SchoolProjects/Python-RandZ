@@ -4,39 +4,49 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+
+    <header>
+        <label><input type="checkbox" name="rotate_zombie"/>Rotate zombie</label>
+        <label><input type="checkbox" name="rotate_bodypart" checked/>Rotate body part</label>
+        
+        <p style="width: 90%; text-align: end; top: 0; position: absolute; pointer-events: none;">Tom OLIVIER</p>
+    </header>
+
     {% for zombie in zombies %}
-    <div class="zombie" style="position: absolute; top: {{ zombie.top}}px; left: {{ zombie.left }}px">
+    <div class="zombie" style="position: absolute; top: {{ zombie.top }}px; left: {{ zombie.left }}px">
 
         <!-- La tête -->
-        <div class="body-part" style="clip-path: inset(100px 600px 600px 100px); left: 8px; top: 10px">
+        <div id="head" class="body-part" style="clip-path: inset(100px 600px 600px 100px); left: 8px; top: 10px; transform: rotate({{ zombie.head_rotate }}deg); transform-origin: 20% 25%;">
             <img src="{{ zombie.head }}" width="800" height="800">
         </div>
         
         <!-- Le tronc -->
-        <div class="body-part" style="clip-path: inset(250px 450px 400px 250px); left: -142px; top: -42px">
+        <div id="trunk" class="body-part" style="clip-path: inset(250px 450px 400px 250px); left: -142px; top: -42px">
             <img src="{{ zombie.trunk }}" width="800" height="800">
         </div>
         
         <!-- Le bras de gauche -->
-        <div class="body-part" style="clip-path: inset(250px 200px 400px 550px); top: -42px; left: -492px">
+        <div id="left_arm" class="body-part" style="clip-path: inset(250px 200px 400px 550px); top: -42px; left: -492px; transform: rotate({{ zombie.left_arm_rotate }}deg); transform-origin: 74% 32%;">
         <img src="{{ zombie.left_arm}}" width="800" height="800">
         </div>
         
         <!-- Le bras de droite -->
-        <div class="body-part" style="clip-path: inset(650px 300px 0px 450px); top: -442px; left: -242px">
+        <div id="right_arm" class="body-part" style="clip-path: inset(650px 300px 5px 450px); top: -442px; left: -242px; transform: rotate(-{{ zombie.right_arm_rotate }}deg); transform-origin: 56% 81%;">
         <img src="{{ zombie.right_arm }}" width="800" height="800">
         </div>
         
         <!-- La jambe de gauche -->
-        <div class="body-part" style="clip-path: inset(250px 700px 400px 50px); top: 108px; left: 58px">
+        <div id="left_leg" class="body-part" style="clip-path: inset(250px 700px 400px 50px); top: 108px; left: 58px; transform: rotate({{ zombie.left_leg_rotate }}deg); transform-origin: 9% 31%;">
             <img src="{{ zombie.left_leg }}" width="800" height="800">
         </div>
         
         <!-- La jambe de droite -->
-        <div class="body-part" style="clip-path: inset(650px 500px 0px 250px); top: -292px; left: -92px">
+        <div id="right_leg" class="body-part" style="clip-path: inset(650px 500px 5px 250px); top: -292px; left: -92px; transform: rotate(-{{ zombie.right_leg_rotate }}deg); transform-origin: 36% 81%;">
             <img src="{{ zombie.right_leg }}" width="800" height="800">
         </div>
         
     </div>
     {% endfor %}
+
+    <script type="text/javascript" src="/static/script/zombie.js"></script>
 {% endblock content %}

@@ -14,7 +14,7 @@ app = Flask(__name__)
 def zombie():
     title = 'Zombie'
     
-    zombies = { Zombie(50, 10) }
+    zombies = { Zombie(300, 310) }
     
     return render_template('zombie.jinja', title=title, zombies=zombies)
 
@@ -22,7 +22,7 @@ def zombie():
 def zombies(nombre):
     title = 'Zombies'
     
-    zombies = { Zombie(random.randint(10, 800), random.randint(10, 800)) for i in range(int(nombre)) }
+    zombies = { Zombie(random.randint(300, 1200), random.randint(310, 1100)) for i in range(int(nombre)) }
     
     return render_template('zombie.jinja', title=title, zombies=zombies)
 

@@ -1,10 +1,35 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.rotate {
+    animation:spin 4s linear infinite;
+}
+
+.static {
+    transform: rotate(0) !important; 
+    transform-origin: center !important;
+}
+
+.zombie {
+    transform: translate(-200px, -200px) scale(0.7);
+} 
+
 .body-part {
     position: absolute;
 }
-
 
 .body-part img {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
   }
+  
+@keyframes spin { 
+    0% {
+        transform:rotate(0deg) translate(-200px, -200px) scale(0.7);
+    }
+    100% {
+        transform:rotate(360deg) translate(-200px, -200px) scale(0.7);
+    } 
+}
